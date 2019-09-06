@@ -41,7 +41,7 @@ void main(void){
         if(currKey == '*' && !gameStart) s = START;
         if(gameStart){
           if(currKey>=1&&currKey<=5) s = INPUT;
-          if(loopCnt%(400000-500*difficulty)==0) s = DESCEND;
+          if(loopCnt%(10000000-500*difficulty)==0) s = DESCEND;
         }
         switch(s){
           case START:
@@ -139,10 +139,6 @@ void main(void){
 void drawScreen() {
     Graphics_clearDisplay(&g_sContext);
     int i,a;
-    for(i = 0; i < 8; i++){
-        for(a = 0; a < 5; a++) {
-            Graphics_drawStringCentered(&g_sContext, gameBoard[i][a], AUTO_STRING_LENGTH, 16 + (16 * a) , 12 + (i * 12), TRANSPARENT_TEXT);
-            Graphics_flushBuffer(&g_sContext);
-        }
-    }
+    for(i = 0; i < 8; i++)for(a = 0; a < 5; a++) Graphics_drawStringCentered(&g_sContext, gameBoard[i][a], AUTO_STRING_LENGTH, 16+(16*a), 12+(i*12), TRANSPARENT_TEXT);
+    Graphics_flushBuffer(&g_sContext);
 }
