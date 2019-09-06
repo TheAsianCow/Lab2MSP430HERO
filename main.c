@@ -75,6 +75,7 @@ void main(void){
             drawScreen();
             s = INPUT;
             break;
+
           case INPUT:
             //checks for player input and kills aliens in lowest row if valid input 1-5
             //makes buzzer sounds if nonvalid character is given
@@ -118,6 +119,7 @@ void main(void){
             }
 
             drawScreen();
+            s = INPUT;
 
             break;
           default:
