@@ -83,13 +83,8 @@ void main(void){
             else {
               for(i = 8; i > 0; i--){
                 for(a = 0; a < 5; a++) {
-<<<<<<< HEAD
-                  if(currKey == gameBoard[i][a][0]){
-                      gameBoard[i][a][0] = ' ';
-=======
-                  if(currKey == gameBoard[i-1][a][0]){
+                  if(currKey == gameBoard[i-1][a][0] && gameBoard[i][a][0]!=' '){
                       gameBoard[i-1][a][0] = ' ';
->>>>>>> 5a13040cd087b029decd8612d21080aa34974aff
                       drawScreen();
                       break;
                   }
