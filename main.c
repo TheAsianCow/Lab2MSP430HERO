@@ -83,7 +83,7 @@ void main(void){
             else {
               for(i = 7; i >= 0; i--){
                 for(a = 0; a < 5; a++) {
-                  if(currKey == gameBoard[i][a][0]){
+                  if(currKey == gameBoard[i][a][0] && gameBoard[i][a][0]!=' '){
                       gameBoard[i][a][0] = ' ';
                       drawScreen();
                       break;
