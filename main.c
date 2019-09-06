@@ -22,16 +22,17 @@ void main(void){
     configKeypad();
 
     unsigned char currKey = 0;
-    unsigned int loopCnt = 0, gameStart = 0, difficulty = 0, i = 0, a = 0, q = 0;
+    unsigned long int loopCnt = 0;
+    unsigned int gameStart = 0, difficulty = 0, i = 0, a = 0;
     enum State s = DEFAULT;
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
     //difficulty is used to calculate how fast the aliens descend
 
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < 5; i++){
         for(a = 0; a < 5; a++) {
             gameBoard[i][a][0] = ((rand() % 6) + 0x30);
-            gameBoard[0][7][1] = '\0';
-            if(gameBoard[i][a][0] == '0') gameBoard[0][a][0] = ' ';
+            gameBoard[i][a][1] = '\0';
+            if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
         }
     }
 
@@ -79,28 +80,32 @@ void main(void){
             //makes buzzer sounds if nonvalid character is given
             if (!(currKey>=0x31&&currKey<=0x35)&&currKey!=0) BuzzerOn();
             else {
-              for(i = 7; i > 0; i--){
-                for(a = 0; a > 4; a++) {
-                  if(currKey == gameBoard[a][i][0])  gameBoard[a][i][0] = ' ';
-                  break;
+              for(i = 7; i >= 0; i--){
+                for(a = 0; a < 5; a++) {
+                  if(currKey == gameBoard[i][a][0]){
+                      gameBoard[i][a][0] = ' ';
+                      break;
+                  }
                 }
               }
             }
             break;
           case DESCEND: //descends the alien and checks if gameOver
-            for (q = 0; q < 5; q++ ) {
-              if(gameBoard[q][6][0] != ' ') {
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    s = DEFAULT;
-                    break;
-              }
+            for(i = 0; i < 8; i++) {
+                for(a = 0; a < 5; a++){
+                    if(gameBoard[i][a][0] != ' '){
+                        Graphics_clearDisplay(&g_sContext);
+                        Graphics_drawStringCentered(&g_sContext, , "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+                        Graphics_flushBuffer(&g_sContext);
+                        s = DEFAULT;
+                        break;
+                    }
+                }
             }
 
             for(i = 0; i < 7; i++) {
                 for (a = 0; a < 5; a++) {
-                    gameBoard[a][i+1][0] = gameBoard[a][i][0];
+                    gameBoard[i+1][a][0] = gameBoard[i][a][0];
                 }
             }
 
