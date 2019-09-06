@@ -28,7 +28,7 @@ void main(void){
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
     //difficulty is used to calculate how fast the aliens descend
 
-    for(i = 0; i < 5; i++){
+    for(i = 0; i < 1; i++){
         for(a = 0; a < 5; a++) {
             gameBoard[i][a][0] = ((rand() % 6) + 0x30);
             gameBoard[i][a][1] = '\0';
@@ -81,10 +81,15 @@ void main(void){
             //makes buzzer sounds if nonvalid character is given
             if (!(currKey>=0x31&&currKey<=0x35)&&currKey!=0) BuzzerOn();
             else {
-              for(i = 7; i >= 0; i--){
+              for(i = 8; i > 0; i--){
                 for(a = 0; a < 5; a++) {
-                  if(currKey == gameBoard[i][a][0] && gameBoard[i][a][0]!=' '){
+<<<<<<< HEAD
+                  if(currKey == gameBoard[i][a][0]){
                       gameBoard[i][a][0] = ' ';
+=======
+                  if(currKey == gameBoard[i-1][a][0]){
+                      gameBoard[i-1][a][0] = ' ';
+>>>>>>> 5a13040cd087b029decd8612d21080aa34974aff
                       drawScreen();
                       break;
                   }
