@@ -133,8 +133,4 @@ void drawScreen() {
             Graphics_flushBuffer(&g_sContext);
         }
     }
-    for(i = 0; i < 8; i++){
-        Graphics_drawStringCentered(&g_sContext, gameBoard[i], AUTO_STRING_LENGTH, 16, 12+(i*12), TRANSPARENT_TEXT);
-        Graphics_flushBuffer(&g_sContext);
-    }
 }
