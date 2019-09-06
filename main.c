@@ -95,7 +95,7 @@ void main(void){
                 for(a = 0; a < 5; a++){
                     if(gameBoard[i][a][0] != ' '){
                         Graphics_clearDisplay(&g_sContext);
-                        Graphics_drawStringCentered(&g_sContext, , "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+                        Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                         Graphics_flushBuffer(&g_sContext);
                         s = DEFAULT;
                         break;
