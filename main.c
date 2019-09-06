@@ -41,7 +41,7 @@ void main(void){
         if(currKey == '*' && !gameStart) s = START;
         if(gameStart){
           if(currKey>=1&&currKey<=5) s = INPUT;
-          if(loopCnt%(40000-500*difficulty)==0) s = DESCEND;
+          if(loopCnt%(400000-500*difficulty)==0) s = DESCEND;
         }
         switch(s){
           case START:
