@@ -84,6 +84,7 @@ void main(void){
                 for(a = 0; a < 5; a++) {
                   if(currKey == gameBoard[i][a][0]){
                       gameBoard[i][a][0] = ' ';
+                      drawScreen();
                       break;
                   }
                 }
@@ -91,17 +92,18 @@ void main(void){
             }
             break;
           case DESCEND: //descends the alien and checks if gameOver
-            for(i = 0; i < 8; i++) {
-                for(a = 0; a < 5; a++){
-                    if(gameBoard[i][a][0] != ' '){
-                        Graphics_clearDisplay(&g_sContext);
-                        Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-                        Graphics_flushBuffer(&g_sContext);
-                        s = DEFAULT;
-                        break;
-                    }
-                }
-            }
+              //checks to see if the next descent ends the game
+//              for(i = 0; i < 8; i++) {
+//                for(a = 0; a < 5; a++){
+//                    if(gameBoard[i][a][0] != ' '){
+//                        Graphics_clearDisplay(&g_sContext);
+//                        Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+//                        Graphics_flushBuffer(&g_sContext);
+//                        s = DEFAULT;
+//                        break;
+//                    }
+//                }
+//            }
 
             for(i = 0; i < 7; i++) {
                 for (a = 0; a < 5; a++) {
@@ -114,6 +116,9 @@ void main(void){
                 gameBoard[0][a][1] = '\0';
                 if(gameBoard[0][a][0] == '0') gameBoard[0][a][0] = ' ';
             }
+
+            drawScreen();
+
             break;
           default:
             if(!gameStart){
