@@ -23,8 +23,8 @@ void main(void){
     configKeypad();
 
     unsigned char currKey = 0;
-    unsigned long int loopCnt = 0;
-    unsigned int gameStart = 0, difficulty = 0, i = 0, a = 0;
+    unsigned long int loopCnt = 0, i = 0;
+    unsigned int gameStart = 0, difficulty = 0, a = 0;
     enum State s = DEFAULT;
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
     //difficulty is used to calculate how fast the aliens descend
@@ -104,7 +104,10 @@ void main(void){
             }
             //checks to see if the next descent ends the game
             for(a = 0; a < 5; a++){
-                if(gameBoard[7][a][0]>='1'&&gameBoard[7][a][0]>='5'){
+                if(gameBoard[5][a][0]>='1'&&gameBoard[5][a][0]>='5'){
+                    drawScreen();
+                    i = 20000;
+                    while(i)i--;
                     BuzzerOn();
                     Graphics_clearDisplay(&g_sContext);
                     Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
@@ -113,7 +116,7 @@ void main(void){
                     loopCnt = 0;
                     gameStart = 0;
                     clearBoard();
-                    i = 50000;
+                    i = 100000;
                     while(i)i--;
                     Graphics_clearDisplay(&g_sContext);
                     BuzzerOff();
