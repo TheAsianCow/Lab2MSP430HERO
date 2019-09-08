@@ -106,11 +106,13 @@ void main(void){
 
             //checks to see if the next descent ends the game
             for(a = 0; a < 5; a++){
-                if(gameBoard[7][a][0] != ' '){
+                if(gameBoard[7][a][0]>='1'&&gameBoard[7][a][0]>='5'){
                     Graphics_clearDisplay(&g_sContext);
                     Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                     Graphics_flushBuffer(&g_sContext);
                     s = DEFAULT;
+                    loopCnt = 0;
+                    gameStart = 0;
                     break;
                 }
             }
