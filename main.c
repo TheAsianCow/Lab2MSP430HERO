@@ -98,7 +98,7 @@ void main(void){
                 }
             }
 
-            for(a = 0; a < 7; a++) {
+            for(a = 0; a < 5; a++) {
                 gameBoard[0][a][0] = ((rand() % 6) + 0x30);
                 if(gameBoard[0][a][0] == '0') gameBoard[0][a][0] = ' ';
             }
