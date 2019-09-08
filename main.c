@@ -106,15 +106,15 @@ void main(void){
 //                }
 //            }
 
-            for(i = 0; i < 7; i++) {
+            for(i = 7; i > 0; i--) {
                 for (a = 0; a < 5; a++) {
-                    gameBoard[i+1][a][0] = gameBoard[i][a][0];
+                    gameBoard[i][a][0] = gameBoard[i-1][a][0];
                 }
             }
 
             for(a = 0; a < 7; a++) {
                 gameBoard[0][a][0] = ((rand() % 6) + 0x30);
-                gameBoard[0][a][1] = '\0';
+//                gameBoard[0][a][1] = '\0';
                 if(gameBoard[0][a][0] == '0') gameBoard[0][a][0] = ' ';
             }
 
