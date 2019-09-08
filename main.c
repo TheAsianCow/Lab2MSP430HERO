@@ -41,7 +41,7 @@ void main(void){
         if(currKey == '*' && !gameStart) s = START;
         if(gameStart){
           if(currKey>=1&&currKey<=5) s = INPUT;
-          if(loopCnt%(100000-500*difficulty)==0) s = DESCEND;
+          if(loopCnt%(10000-500*difficulty)==0) s = DESCEND;
         }
         switch(s){
           case START:
@@ -79,8 +79,8 @@ void main(void){
           case INPUT:
             //checks for player input and kills aliens in lowest row if valid input 1-5
             //makes buzzer sounds if nonvalid character is given
-            if (!(currKey>=0x31&&currKey<=0x35)&&currKey!=0) BuzzerOn();
-            else {
+//            if (!(currKey>=0x31&&currKey<=0x35)&&currKey!=0) BuzzerOn();
+//            else {
               for(i = 8; i > 0; i--){
                 for(a = 0; a < 5; a++) {
                   if(currKey == gameBoard[i-1][a][0] && currKey!=0){
@@ -90,7 +90,7 @@ void main(void){
                   }
                 }
               }
-            }
+//            }
             break;
           case DESCEND: //descends the alien and checks if gameOver
               //checks to see if the next descent ends the game
