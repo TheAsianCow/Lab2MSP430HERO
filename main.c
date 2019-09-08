@@ -33,7 +33,6 @@ void main(void){
     for(i = 0; i < 1; i++){
         for(a = 0; a < 5; a++) {
             gameBoard[i][a][0] = ((rand() % 6) + 0x30);
-            gameBoard[i][a][1] = '\0';
             if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
             else aliens++;
         }
@@ -60,9 +59,9 @@ void main(void){
 
             gameStart = 1;
             Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, "Starting game in: ", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "Starting in: ", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);
-            i = 100000;
+            i = 50000;
             while(i)i--;
             for(i = 0; i <= 20000; i++){
               if(i==0){
@@ -161,7 +160,6 @@ void main(void){
               for(i = 0; i < 1; i++){
                   for(a = 0; a < 5; a++) {
                       gameBoard[i][a][0] = ((rand() % 6) + 0x30);
-                      gameBoard[i][a][1] = '\0';
                       if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
                       else aliens++;
                   }
