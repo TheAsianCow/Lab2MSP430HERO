@@ -84,8 +84,8 @@ void main(void){
                  if(currKey == gameBoard[i-1][a][0] && currKey!=0){
                      gameBoard[i-1][a][0] = ' ';
                      drawScreen();
-                     i=0;
-                     a=5;
+                     i=1;
+                     a=4;
                  }
                }
              }
