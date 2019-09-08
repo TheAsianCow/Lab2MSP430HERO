@@ -42,7 +42,7 @@ void main(void){
         if(currKey == '*' && !gameStart) s = START;
         if(gameStart){
           if(currKey>=1&&currKey<=5) s = INPUT;
-          if(loopCnt%(1000-500*difficulty)==0) s = DESCEND;
+          if(loopCnt%(1000-20*difficulty)==0) s = DESCEND;
         }
         switch(s){
           case START:
@@ -84,11 +84,13 @@ void main(void){
                  if(currKey == gameBoard[i-1][a][0] && currKey!=0){
                      gameBoard[i-1][a][0] = ' ';
                      drawScreen();
-                     break;
+                     i=0;
+                     a=5;
                  }
                }
              }
             break;
+
           case DESCEND: //descends the alien and checks if gameOver
             for(i = 7; i > 0; i--) {
                 for (a = 0; a < 5; a++) {
@@ -98,7 +100,6 @@ void main(void){
 
             for(a = 0; a < 7; a++) {
                 gameBoard[0][a][0] = ((rand() % 6) + 0x30);
-//                gameBoard[0][a][1] = '\0';
                 if(gameBoard[0][a][0] == '0') gameBoard[0][a][0] = ' ';
             }
             //checks to see if the next descent ends the game
