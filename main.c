@@ -78,34 +78,17 @@ void main(void){
 
           case INPUT:
             //checks for player input and kills aliens in lowest row if valid input 1-5
-            //makes buzzer sounds if nonvalid character is given
-//            if (!(currKey>=0x31&&currKey<=0x35)&&currKey!=0) BuzzerOn();
-//            else {
-              for(i = 8; i > 0; i--){
-                for(a = 0; a < 5; a++) {
-                  if(currKey == gameBoard[i-1][a][0] && currKey!=0){
-                      gameBoard[i-1][a][0] = ' ';
-                      drawScreen();
-                      break;
-                  }
-                }
-              }
-//            }
+             for(i = 8; i > 0; i--){
+               for(a = 0; a < 5; a++) {
+                 if(currKey == gameBoard[i-1][a][0] && currKey!=0){
+                     gameBoard[i-1][a][0] = ' ';
+                     drawScreen();
+                     break;
+                 }
+               }
+             }
             break;
           case DESCEND: //descends the alien and checks if gameOver
-              //checks to see if the next descent ends the game
-//              for(i = 0; i < 8; i++) {
-//                for(a = 0; a < 5; a++){
-//                    if(gameBoard[i][a][0] != ' '){
-//                        Graphics_clearDisplay(&g_sContext);
-//                        Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-//                        Graphics_flushBuffer(&g_sContext);
-//                        s = DEFAULT;
-//                        break;
-//                    }
-//                }
-//            }
-
             for(i = 7; i > 0; i--) {
                 for (a = 0; a < 5; a++) {
                     gameBoard[i][a][0] = gameBoard[i-1][a][0];
@@ -120,6 +103,17 @@ void main(void){
 
             drawScreen();
             s = INPUT;
+
+            //checks to see if the next descent ends the game
+            for(a = 0; a < 5; a++){
+                if(gameBoard[7][a][0] != ' '){
+                    Graphics_clearDisplay(&g_sContext);
+                    Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+                    Graphics_flushBuffer(&g_sContext);
+                    s = DEFAULT;
+                    break;
+                }
+            }
 
             break;
           default:
