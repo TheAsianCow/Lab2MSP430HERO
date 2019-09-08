@@ -24,7 +24,7 @@ void main(void){
 
     unsigned char currKey = 0;
     unsigned long int loopCnt = 0, i = 0;
-    unsigned int gameStart = 0, difficulty = 0, a = 0, aliens = 0, rows = 1;
+    unsigned int gameStart = 0, difficulty = 0, a = 0, aliens = 0, rows = 0;
     enum State s = DEFAULT;
     char level[10] = "LEVEL 1";
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
@@ -44,8 +44,8 @@ void main(void){
         if(currKey == '*' && !gameStart) s = START;
         if(gameStart){
           if(currKey>=1&&currKey<=5) s = INPUT;
-          if(loopCnt%(1000-20*difficulty)==0) s = DESCEND;
-          if(aliens==0) s = ADVANCE;
+          if(loopCnt%(500-20*difficulty)==0) s = DESCEND;
+          if(aliens==0&&rows==0) s = ADVANCE;
         }
         switch(s){
           case START:
@@ -53,28 +53,34 @@ void main(void){
             //only does something if gameStart !=0
 
             Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT)
+            Graphics_drawStringCentered(&g_sContext, "LEVEL 1", AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
+            Graphics_flushBuffer(&g_sContext);
+            i = 100000;
+            while(i)i--;
 
             gameStart = 1;
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "Starting game in: ", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-            for(i = 0; i <= 10000; i++){
+            Graphics_flushBuffer(&g_sContext);
+            i = 100000;
+            while(i)i--;
+            for(i = 0; i <= 20000; i++){
               if(i==0){
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "3", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
               }
-              if(i==4000){
+              if(i==8000){
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "2", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
               }
-              if(i==8000){
+              if(i==16000){
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "1", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
               }
-              if(i==10000){
+              if(i==20000){
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "START", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
@@ -103,6 +109,7 @@ void main(void){
             for(i = 7; i > 0; i--) {
                 for (a = 0; a < 5; a++) {
                     gameBoard[i][a][0] = gameBoard[i-1][a][0];
+                    if(rows==0) gameBoard[i-1][a][0]=' ';
                 }
             }
 
@@ -116,7 +123,7 @@ void main(void){
             }
             //checks to see if the next descent ends the game
             for(a = 0; a < 5; a++){
-                if(gameBoard[5][a][0]>='1'&&gameBoard[5][a][0]>='5'){
+                if(gameBoard[5][a][0]>='1'&&gameBoard[5][a][0]<='5'){
                     drawScreen();
                     i = 20000;
                     while(i)i--;
@@ -145,7 +152,9 @@ void main(void){
           case ADVANCE:
               difficulty++;
               level[6] = difficulty+49;
+              Graphics_clearDisplay(&g_sContext);
               Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+              Graphics_flushBuffer(&g_sContext);
               i = 100000;
               while(i)i--;
 
