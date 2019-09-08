@@ -30,13 +30,13 @@ void main(void){
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
     //difficulty is used to calculate how fast the aliens descend
 
-    for(i = 0; i < 1; i++){
-        for(a = 0; a < 5; a++) {
-            gameBoard[i][a][0] = ((rand() % 6) + 0x30);
-            if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
-            else aliens++;
-        }
-    }
+//    for(i = 0; i < 1; i++){
+//        for(a = 0; a < 5; a++) {
+//            gameBoard[i][a][0] = ((rand() % 6) + 0x30);
+//            if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
+//            else aliens++;
+//        }
+//    }
 
     while(1){
         currKey = getKey();
@@ -50,6 +50,11 @@ void main(void){
           case START:
             //start game countdown
             //only does something if gameStart !=0
+            for(a = 0; a < 5; a++) {
+                gameBoard[i][a][0] = ((rand() % 6) + 0x30);
+                 if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
+                 else aliens++;
+            }
 
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "LEVEL 1", AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
@@ -157,12 +162,10 @@ void main(void){
               i = 100000;
               while(i)i--;
 
-              for(i = 0; i < 1; i++){
-                  for(a = 0; a < 5; a++) {
-                      gameBoard[i][a][0] = ((rand() % 6) + 0x30);
-                      if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
-                      else aliens++;
-                  }
+              for(a = 0; a < 5; a++) {
+                  gameBoard[i][a][0] = ((rand() % 6) + 0x30);
+                  if(gameBoard[i][a][0] == '0') gameBoard[i][a][0] = ' ';
+                  else aliens++;
               }
 
               drawScreen();
