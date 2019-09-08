@@ -9,6 +9,7 @@
 #include <stdio.h>
 
 void drawScreen();
+void clearBoard();
 
 char gameBoard[8][5][2];
 
@@ -100,21 +101,27 @@ void main(void){
 //                gameBoard[0][a][1] = '\0';
                 if(gameBoard[0][a][0] == '0') gameBoard[0][a][0] = ' ';
             }
-
-            drawScreen();
-            s = INPUT;
-
             //checks to see if the next descent ends the game
             for(a = 0; a < 5; a++){
                 if(gameBoard[7][a][0]>='1'&&gameBoard[7][a][0]>='5'){
+                    BuzzerOn();
                     Graphics_clearDisplay(&g_sContext);
                     Graphics_drawStringCentered(&g_sContext, "GAME OVER", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                     Graphics_flushBuffer(&g_sContext);
                     s = DEFAULT;
                     loopCnt = 0;
                     gameStart = 0;
+                    clearBoard();
+                    i = 50000;
+                    while(i)i--;
+                    Graphics_clearDisplay(&g_sContext);
+                    BuzzerOff();
                     break;
                 }
+            }
+            if(gameStart){
+                drawScreen();
+                s = INPUT;
             }
 
             break;
@@ -137,4 +144,9 @@ void drawScreen() {
     int i,a;
     for(i = 0; i < 8; i++)for(a = 0; a < 5; a++) Graphics_drawStringCentered(&g_sContext, gameBoard[i][a], AUTO_STRING_LENGTH, 16+(16*a), 12+(i*12), TRANSPARENT_TEXT);
     Graphics_flushBuffer(&g_sContext);
+}
+
+void clearBoard(){
+    int i,j;
+    for(i = 0; i<8; i++)for(j = 0; j < 5; j++)gameBoard[i][j][0] = ' ';
 }
