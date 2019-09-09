@@ -7,6 +7,7 @@
 #include "peripherals.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 void drawScreen();
 void clearBoard();
