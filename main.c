@@ -138,6 +138,8 @@ void main(void){
                     s = DEFAULT;
                     loopCnt = 0;
                     gameStart = 0;
+                    aliens = 0;
+                    rows = 0;
                     clearBoard();
                     i = 100000;
                     while(i)i--;
