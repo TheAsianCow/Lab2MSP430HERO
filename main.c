@@ -160,6 +160,7 @@ void main(void){
 
           case ADVANCE:
               difficulty++;
+              loopCnt = 0;
               sprintf(level,"LEVEL %c", difficulty+49);
               Graphics_clearDisplay(&g_sContext);
               Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
