@@ -140,7 +140,8 @@ void main(void){
                     gameStart = 0;
                     aliens = 0;
                     rows = 0;
-                    level = "LEVEL 1";
+                    level[6] = '1';
+                    difficulty = 0;
                     clearBoard();
                     i = 100000;
                     while(i)i--;
