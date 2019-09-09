@@ -57,7 +57,7 @@ void main(void){
             }
 
             Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, "LEVEL 1", AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             i = 100000;
             while(i)i--;
@@ -140,6 +140,7 @@ void main(void){
                     gameStart = 0;
                     aliens = 0;
                     rows = 0;
+                    level = "LEVEL 1";
                     clearBoard();
                     i = 100000;
                     while(i)i--;
