@@ -26,7 +26,9 @@ void main(void){
     unsigned long int loopCnt = 0, i = 0;
     unsigned int gameStart = 0, difficulty = 0, a = 0, aliens = 0, rows = 0;
     enum State s = DEFAULT;
-    char level[10] = "LEVEL 1";
+    char level[6] = "LEVEL ";
+    char num[3];
+    char levelnum[10] = "LEVEL 1";
     //loopCnt counts the number of loops during the game, gameStart 0 to not start count, 1 to start counting during game
     //difficulty is used to calculate how fast the aliens descend
 
@@ -57,7 +59,7 @@ void main(void){
             }
 
             Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, levelnum, AUTO_STRING_LENGTH, 48, 48, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             i = 100000;
             while(i)i--;
@@ -140,7 +142,7 @@ void main(void){
                     gameStart = 0;
                     aliens = 0;
                     rows = 0;
-                    level = "LEVEL 1";
+                    sprintf(num,"%c", 49);
                     clearBoard();
                     i = 100000;
                     while(i)i--;
@@ -158,9 +160,10 @@ void main(void){
 
           case ADVANCE:
               difficulty++;
-              level[6] = difficulty+49;
+              sprintf(num,"%c", difficulty+49);
+              strcat(level, num);
               Graphics_clearDisplay(&g_sContext);
-              Graphics_drawStringCentered(&g_sContext, level, AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+              Graphics_drawStringCentered(&g_sContext, levelnum, AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
               Graphics_flushBuffer(&g_sContext);
               i = 100000;
               while(i)i--;
