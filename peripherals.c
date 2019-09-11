@@ -66,6 +66,47 @@ void setLeds(unsigned char state)
     P6OUT |= mask;
 }
 
+void setUserLED(unsigned char state){
+    unsigned char mask = 0;
+
+    P6OUT &= ~(BIT4|BIT3|BIT2|BIT1);
+
+    if(state & BIT0) mask |= BIT4;
+    if(state & BIT1) mask |= BIT3;
+
+    P6OUT |= mask;
+}
+
+void configBtn(void){
+
+    //Configure buttons for I/O
+    P7SEL &= ~(BIT4|BIT0);
+    P3SEL &= ~(BIT6);
+    P2SEL &= ~(BIT2);
+
+    P7DIR &= ~(BIT4 | BIT0);
+    P3DIR &= ~(BIT6);
+    P2DIR &= ~(BIT2);
+
+    P7REN |=  (BIT4 | BIT0);
+    P3REN |=  (BIT6);
+    P2REN |=  (BIT2);
+
+    P7OUT |=  (BIT4 | BIT0);
+    P3OUT |=  (BIT6);
+    P2OUT |=  (BIT2);
+}
+
+unsigned char getBtn(void){
+    char out = 0;
+
+    if(~(P7IN & BIT0)) out |= BIT0;
+    if(~(P7IN & BIT4)) out |= BIT4;
+    if(~(P3IN & BIT6)) out |= BIT6;
+    if(~(P2IN & BIT2)) out |= BIT2;
+
+    return out;
+}
 
 /*
  * Enable a PWM-controlled buzzer on P3.5
