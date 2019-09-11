@@ -4,5 +4,5 @@
 	<deviceFamily value="MSP430"/>
 	<connection value="common/targetdb/connections/TIMSP430-USB.xml"/>
 	<isTargetManual value="false"/>
-	<origin value="C:/Users/Jeffrey Huang/workspace_v8/lab1_spaceinvaders_jyhuang_mbmccue"/>
+	<origin value="C:/Users/Jeffrey Huang/Documents/WPI/2019-2020/A term/ECE2049/Labs/Lab2MSP430HERO"/>
 </projectOptions>
