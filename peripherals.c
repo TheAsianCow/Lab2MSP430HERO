@@ -16,10 +16,9 @@
 
 #include "peripherals.h"
 
-
 // Globals
 tContext g_sContext;    // user defined type used by graphics library
-
+int nextNote = 0;
 
 void initLeds(void)
 {
@@ -112,6 +111,8 @@ unsigned char getBtn(void){
  * Enable a PWM-controlled buzzer on P3.5
  * This function makes use of TimerB0.
  */
+
+/*
 void BuzzerOn(void)
 {
     // Initialize PWM output on P3.5, which corresponds to TB0.5
@@ -132,6 +133,120 @@ void BuzzerOn(void)
     TB0CCTL5 &= ~CCIE;                      // Disable capture/compare interrupts
     TB0CCR5   = TB0CCR0/2;                  // Configure a 50% duty cycle
 }
+*/
+
+// Song functions
+/*
+struct Note hotel_cali[] = {octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs8),
+
+                                    octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
+                                    octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
+                                    octaveUp(Cs6), octaveUp(As6),
+
+                                    rest6, rest6, rest6, rest8,
+
+                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E8),
+
+                                    octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
+                                    octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
+                                    octaveUp(B6), octaveUp(Gs6),
+
+                                    rest6, rest6, rest6, rest8
+        };
+*/
+
+int playNote(struct Note in, int bpm) {
+    // enable interrupt
+    _BIS_SR(GIE);
+    // enable interupt
+    // Init
+    P3SEL |= BIT5;
+    P3DIR |= BIT5;
+
+    // B0 timer control
+    TB0CTL  = (TBSSEL__ACLK|ID__1|MC__UP);
+    TB0CTL  &= ~TBIE;
+
+    // A2 timer control
+    TA2CTL  = (TASSEL__ACLK|ID__1|MC__UP);
+
+    TB0CCR0   = CLK_SPEED/in.freq;         // clock frequency/note frequency = pwm period
+    TB0CCTL0 &= ~CCIE;
+
+    // counts notes based on beat
+    // ex: whole note 4 beats (at 60 bpm it is 1 note per second
+    //note time 1 whole 2 half 4 for quarter 8 for eighth and 16 for sixteenth
+    if(in.freq == 0) BuzzerOff();
+    TA2CCR0  = (CLK_SPEED * (bpm / 15)) / in.time;
+    TA2CCTL0 = CCIE; // IE
+
+    TB0CCTL5  = OUTMOD_7;
+    TB0CCTL5 &= ~CCIE;
+    TB0CCR5   = TB0CCR0/2;
+    nextNote = 1;
+    return 0;
+}
+
+#pragma vector=TIMER2_A0_VECTOR
+interrupt void Timer_A2 (void) {
+    // Turns off buzzer resets timers
+    TB0CCTL0 = 0;
+    TB0CCTL5 = 0;
+    TA2CCTL0 = 0;
+    nextNote = 0;
+}
+
+
+void playSong(struct Note song[SONG_LENGTH], int songBpm) {
+    //Plays the song
+    int i;
+    for (i = 0; i < SONG_LENGTH; i++) {
+            playNote(song[i], songBpm);
+            while (nextNote == 1);
+    }
+}
+
+struct Note octaveUp(struct Note in) {
+    struct Note out = {2 * in.freq, in.time};
+    //moves a note up an octave
+    return out;
+}
+
+struct Note octaveDown(struct Note in) {
+    // Moves note down an octave
+    struct Note out = {in.freq / 2, in.time};
+    return out;
+}
+
+void BuzzerOn(int freq)
+{
+    // Initialize PWM output on P3.5, which corresponds to TB0.5
+    P3SEL |= BIT5; // Select peripheral output mode for P3.5
+    P3DIR |= BIT5;
+
+    TB0CTL  = (TBSSEL__ACLK|ID__1|MC__UP);  // Configure Timer B0 to use ACLK, divide by 1, up mode
+    TB0CTL  &= ~TBIE;                       // Explicitly Disable timer interrupts for safety
+
+    // Now configure the timer period, which controls the PWM period
+    // Doing this with a hard coded values is NOT the best method
+    // We do it here only as an example. You will fix this in Lab 2.
+    TB0CCR0   = freq;                    // Set the PWM period in ACLK ticks
+    TB0CCTL0 &= ~CCIE;                  // Disable timer interrupts
+
+    // Configure CC register 5, which is connected to our PWM pin TB0.5
+    TB0CCTL5  = OUTMOD_7;                   // Set/reset mode for PWM
+    TB0CCTL5 &= ~CCIE;                      // Disable capture/compare interrupts
+    TB0CCR5   = TB0CCR0/2;                  // Configure a 50% duty cycle
+}
+
 
 /*
  * Disable the buzzer on P7.5
