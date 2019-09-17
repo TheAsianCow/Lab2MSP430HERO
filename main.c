@@ -9,11 +9,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+#define CLK_SPEED 32768
+#define BPM 60 //not real value
+#define SONG_LENGTH 56 //not real value
 
 void main(void){
-    WDTCTL = WDTPW | WDTHOLD;    // Stop watchdog timer. Always need to stop this!!
-                                 // You can then configure it properly, if desired
+    WDTCTL = WDTPW | WDTHOLD;
+        // enable interrupt
+        _BIS_SR(GIE);
+        // Notes:
+
+
+
+
     initLeds();
     configDisplay();
     configKeypad();
@@ -22,5 +30,6 @@ void main(void){
     //song will be stored in an array of structs
     //length of song will depend on what song we choose/how we compose it
     //the amount of memory taken up by the song will be # of notes * sizeof(struct note)
-
 }
+
+
