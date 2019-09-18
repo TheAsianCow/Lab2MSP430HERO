@@ -59,6 +59,7 @@ struct Note {
         //note time 1 whole 2 half 4 for quarter 8 for eighth and 16 for sixteenth
 };
 unsigned int timerCount;
+unsigned int start;
 
 /*
  * UCSI SPI Clock parameters
@@ -85,6 +86,7 @@ unsigned char getBtn(void);
 
 int playNote(struct Note in);
 __interrupt void Timer_A2 (void);
+void countDown(void);
 struct Note octaveUp(struct Note in);
 struct Note octaveDown(struct Note in);
 void initTimer();

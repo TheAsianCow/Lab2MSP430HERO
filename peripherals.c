@@ -178,6 +178,9 @@ interrupt void Timer_A2 (void) {
     timerCount++;
 }
 
+void countDown(void){
+}
+
 struct Note octaveUp(struct Note in) {
     struct Note out = {2 * in.freq, in.time};
     //moves a note up an octave
