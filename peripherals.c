@@ -177,6 +177,8 @@ interrupt void Timer_A2 (void) {
     nextNote = 0;
 }
 
+void countDown(void){
+}
 
 void playSong(struct Note song[SONG_LENGTH], int songBpm) {
     //Plays the song

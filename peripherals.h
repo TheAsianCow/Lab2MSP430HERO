@@ -58,6 +58,7 @@ struct Note {
         int freq, time; //note frequency
         //note time 1 whole 2 half 4 for quarter 8 for eighth and 16 for sixteenth
 };
+unsigned int start;
 
 // Notes:
 /*
@@ -139,6 +140,7 @@ unsigned char getBtn(void);
 
 int playNote(struct Note in, int bpm);
 __interrupt void Timer_A2 (void);
+void countDown(void);
 void playSong(struct Note song[SONG_LENGTH], int songBpm);
 struct Note octaveUp(struct Note in);
 struct Note octaveDown(struct Note in);

@@ -111,7 +111,7 @@ void main(void){
     while (1){
         currKey = getKey();
 
-        if (currKey == '*'){
+        if ((!gameStart && currKey == '*') || (gameStart&&currKey=='#')){
             gameStart = 1;
             countDown = 1;
         };
