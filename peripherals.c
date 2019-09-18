@@ -136,33 +136,6 @@ void BuzzerOn(void)
 */
 
 // Song functions
-/*
-struct Note hotel_cali[] = {octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                    octaveUp(D6), octaveUp(B6), octaveUp(Fs8),
-
-                                    octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
-                                    octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
-                                    octaveUp(Cs6), octaveUp(As6),
-
-                                    rest6, rest6, rest6, rest8,
-
-                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                    octaveUp(Cs6), octaveUp(A6), octaveUp(E8),
-
-                                    octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
-                                    octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
-                                    octaveUp(B6), octaveUp(Gs6),
-
-                                    rest6, rest6, rest6, rest8
-        };
-*/
-
 int playNote(struct Note in, int bpm) {
     // enable interrupt
     _BIS_SR(GIE);
