@@ -60,6 +60,7 @@ struct Note {
 };
 unsigned int timerCount;
 unsigned int start;
+unsigned int note;
 
 /*
  * UCSI SPI Clock parameters

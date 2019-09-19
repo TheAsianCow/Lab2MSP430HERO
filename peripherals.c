@@ -176,9 +176,13 @@ int playNote(struct Note in) {
 interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
     timerCount++;
+    countDown(song[note], timerCount);
+    playNote(song[note]);
 }
 
-void countDown(void){
+void countDown(struct Note int count){
+    setTime = 16 / in.time;
+    if (count % setTime == 0) note++;
 }
 
 struct Note octaveUp(struct Note in) {
