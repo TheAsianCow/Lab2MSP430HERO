@@ -141,8 +141,7 @@ struct Note song[SONG_LENGTH];
 void initTimer() {
     // A2 timer control
     TA2CTL  = (TASSEL__ACLK|ID__1|MC__UP);
-    if(in.freq == 0) BuzzerOff();
-    TA2CCR0  = (CLK_SPEED * (bpm / 15)) / 16;
+    TA2CCR0  = (CLK_SPEED * (SONG_BPM / 15)) / 16;
     TA2CCTL0 = CCIE; // IE
 
 }
@@ -180,8 +179,8 @@ interrupt void Timer_A2 (void) {
     playNote(song[note]);
 }
 
-void countDown(struct Note int count){
-    setTime = 16 / in.time;
+void countDown(struct Note in, int count) {
+    int setTime = 16 / in.time;
     if (count % setTime == 0) note++;
 }
 

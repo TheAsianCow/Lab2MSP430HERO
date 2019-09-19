@@ -87,7 +87,7 @@ unsigned char getBtn(void);
 
 int playNote(struct Note in);
 __interrupt void Timer_A2 (void);
-void countDown(void);
+void countDown(struct Note in, int count);
 struct Note octaveUp(struct Note in);
 struct Note octaveDown(struct Note in);
 void initTimer();
