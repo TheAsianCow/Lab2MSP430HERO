@@ -105,7 +105,9 @@ void main(void){
     initTimer();
 
     unsigned char currKey;
-    unsigned int gameStart = 0, countDown = 0, i = 0, j = 0;
+    unsigned int i = 0, j = 0;
+    gameStart = 0;
+    countdown = 0;
 
     //initialize the song
 
@@ -114,10 +116,10 @@ void main(void){
 
         if (!gameStart && currKey == '*'){
             gameStart = 1;
-            countDown = 1;
+            countdown = 1;
         };
 
-        if (countDown == 1){
+        if (countdown == 1){
             for (i = 0; i <= 20000; i++){
                 if (i == 0){
                     Graphics_clearDisplay(&g_sContext);
@@ -148,7 +150,7 @@ void main(void){
                 }
             }
 
-            countDown = 0;
+            countdown = 0;
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);

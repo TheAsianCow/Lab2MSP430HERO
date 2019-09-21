@@ -62,6 +62,10 @@ unsigned int timerCount;
 unsigned int start;
 unsigned int note;
 
+unsigned int gameStart;
+unsigned int countdown;
+
+
 /*
  * UCSI SPI Clock parameters
  * The actual clock frequency is given in number of

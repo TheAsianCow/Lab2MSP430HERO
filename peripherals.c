@@ -149,7 +149,7 @@ void initTimer() {
 int playNote(struct Note in) {
 
     // enable interrupt
-    _BIS_SR(GIE);
+//    _BIS_SR(GIE);
 
     // Init
     P3SEL |= BIT5;
@@ -174,9 +174,11 @@ int playNote(struct Note in) {
 #pragma vector=TIMER2_A0_VECTOR
 interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
-    timerCount++;
-    countDown(song[note], timerCount);
-    playNote(song[note]);
+    if(gameStart){
+        timerCount++;
+        countDown(song[note], timerCount);
+        playNote(song[note]);
+    }
 }
 
 void countDown(struct Note in, int count) {
