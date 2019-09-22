@@ -176,7 +176,7 @@ interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
     if(countdown==1){
         timerCount++;
-        if(timerCount)
+        if(timerCount);
     }
     if(gameStart==1){
         timerCount++;
