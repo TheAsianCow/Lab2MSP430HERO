@@ -225,10 +225,7 @@ interrupt void Timer_A2 (void) {
 
 void countDown(struct Note in, int count) {
     int setTime = 16/in.time*64;
-    if (count % setTime == 0){
-        note++;
-        setLeds(0);
-    }
+    if (count % setTime == 0)note++;
 }
 
 struct Note octaveUp(struct Note in) {

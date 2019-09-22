@@ -58,7 +58,7 @@ void main(void){
 
 //    const struct Note B4 = {494, 4};
 //    const struct Note B8 = {494, 8};
-    const struct Note B6 = {494, 16, BIT2};
+    const struct Note B6 = {494, 16, BIT3};
 
 //    const struct Note C4 = {523, 4};
 //    const struct Note C8 = {523, 8};
@@ -66,7 +66,7 @@ void main(void){
 
 //    const struct Note Cs4 = {554, 4};
 //    const struct Note Cs8 = {554, 8};
-    const struct Note Cs6 = {554, 16, BIT3};
+    const struct Note Cs6 = {554, 16, BIT2};
 
 //    const struct Note D4 = {587, 4};
 //    const struct Note D8 = {587, 8};
