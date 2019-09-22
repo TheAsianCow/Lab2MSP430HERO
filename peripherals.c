@@ -220,7 +220,15 @@ interrupt void Timer_A2 (void) {
 
 void countDown(struct Note in, int count) {
     int setTime = 16/in.time*64*2;
-    if (count % setTime == 0)note++;
+    if (count % setTime == 0){
+        if(hit==0){
+            Graphics_clearDisplay(&g_sContext);
+            Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+            Graphics_flushBuffer(&g_sContext);
+        }
+        hit = 0;
+        note++;
+    }
 }
 
 struct Note octaveUp(struct Note in) {

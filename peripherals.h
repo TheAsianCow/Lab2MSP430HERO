@@ -69,7 +69,7 @@ unsigned int note;
 unsigned int gameStart;
 unsigned int countdown;
 unsigned int starting;
-
+unsigned int hit;
 
 /*
  * UCSI SPI Clock parameters

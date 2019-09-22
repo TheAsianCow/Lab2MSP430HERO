@@ -183,6 +183,7 @@ void main(void){
     countdown = 0;
     starting = 4;
     timerCount = 0;
+    hit = 0;
     unsigned int health[] = {1,1,1,1,1,1,1,1,1,1},i = 10, j = 0;
 
     while (1){
@@ -235,30 +236,31 @@ void main(void){
         }
         else if(gameStart==1){
             if(hotel_cali[note].led==BIT0 && currBtn==BIT4){
+                hit = 1;
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
             }
             else if(hotel_cali[note].led==BIT1 && currBtn==BIT2){
+                hit = 1;
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
             }
             else if(hotel_cali[note].led==BIT2 && currBtn==BIT6){
+                hit = 1;
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
             }
             else if(hotel_cali[note].led==BIT3 && currBtn==BIT0){
+                hit = 1;
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
             }
             else {
 //                i--;
-                Graphics_clearDisplay(&g_sContext);
-                Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
-                Graphics_flushBuffer(&g_sContext);
 //                if(i){
 //                    Graphics_clearDisplay(&g_sContext);
 //                    Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
