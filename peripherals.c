@@ -219,7 +219,7 @@ interrupt void Timer_A2 (void) {
 }
 
 void countDown(struct Note in, int count) {
-    int setTime = 16/in.time*64;
+    int setTime = 16/in.time*64*2;
     if (count % setTime == 0)note++;
 }
 
