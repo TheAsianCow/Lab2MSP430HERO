@@ -229,6 +229,12 @@ void main(void){
 //            Graphics_flushBuffer(&g_sContext);
 
         }
+        else if(gameStart==1&&currKey=='#'){
+            gameStart = 2;
+            timerCount = 0;
+            note = 0;
+            BuzzerOff();
+        }
         else if(gameStart==1){
 //            Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
