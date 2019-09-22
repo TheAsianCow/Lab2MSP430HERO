@@ -63,13 +63,7 @@ struct Note {
 //Song
 struct Note hotel_cali[SONG_LENGTH];
 
-unsigned int timerCount;
-unsigned int start;
-unsigned int note;
-unsigned int gameStart;
-unsigned int countdown;
-unsigned int starting;
-unsigned int hit, misses, health[10];
+unsigned int timerCount, start, note, gameStart, countdown, starting, hit, misses, health[10], won;
 
 /*
  * UCSI SPI Clock parameters

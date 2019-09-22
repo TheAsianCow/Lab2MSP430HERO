@@ -214,7 +214,18 @@ interrupt void Timer_A2 (void) {
         countDown(hotel_cali[note], timerCount);
         timerCount++;
     }
-    if(note==SONG_LENGTH) reset();
+    if(note==SONG_LENGTH){
+        won = 1;
+        Graphics_clearDisplay(&g_sContext);
+        Graphics_drawStringCentered(&g_sContext, "YOU WIN!", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+        timerCount = 0;
+        note = 0;
+    }
+    if(won){
+        timerCount++;
+        if(timerCount%200==0)reset();
+    }
 }
 
 void countDown(struct Note in, int count) {
@@ -249,6 +260,7 @@ void reset(void){
     gameStart = 2;
     timerCount = 0;
     note = 0;
+    won = 0;
     BuzzerOff();
     setLeds(0);
 }

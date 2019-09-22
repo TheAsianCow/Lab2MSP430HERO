@@ -187,6 +187,7 @@ void main(void){
     hit = 0;
     misses = 10;
     for(j = 0; j < 10; j++) health[j] = 1;
+    won = 0;
 
     while (1){
         currKey = getKey();
