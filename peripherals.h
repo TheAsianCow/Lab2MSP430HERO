@@ -60,7 +60,7 @@ struct Note {
 };
 
 //Song
-struct Note hotel_cali[54];
+struct Note hotel_cali[SONG_LENGTH];
 
 unsigned int timerCount;
 unsigned int start;

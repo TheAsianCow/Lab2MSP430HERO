@@ -176,8 +176,8 @@ interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
     if(gameStart){
         timerCount++;
-        countDown(song[note], timerCount);
-        playNote(song[note]);
+        countDown(hotel_cali[note], timerCount);
+        playNote(hotel_cali[note]);
     }
 }
 
