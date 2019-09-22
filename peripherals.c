@@ -98,10 +98,10 @@ void configBtn(void){
 unsigned char getBtn(void){
     char out = 0;
 
-    if(~(P7IN & BIT0)) out |= BIT0;
-    if(~(P7IN & BIT4)) out |= BIT4;
-    if(~(P3IN & BIT6)) out |= BIT6;
-    if(~(P2IN & BIT2)) out |= BIT2;
+    if(!(P7IN & BIT0)) out |= BIT0;
+    if(!(P7IN & BIT4)) out |= BIT4;
+    if(!(P3IN & BIT6)) out |= BIT6;
+    if(!(P2IN & BIT2)) out |= BIT2;
 
     return out;
 }

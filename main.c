@@ -255,18 +255,18 @@ void main(void){
                 Graphics_flushBuffer(&g_sContext);
             }
             else {
-                i--;
+//                i--;
                 Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
-                if(i){
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    j = 16000;
-                    while(j)j--;
-                    reset();
-                }
+//                if(i){
+//                    Graphics_clearDisplay(&g_sContext);
+//                    Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+//                    Graphics_flushBuffer(&g_sContext);
+//                    j = 16000;
+//                    while(j)j--;
+//                    reset();
+//                }
             }
 
         }
