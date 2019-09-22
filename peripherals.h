@@ -100,6 +100,7 @@ void countDown(struct Note in, int count);
 struct Note octaveUp(struct Note in);
 struct Note octaveDown(struct Note in);
 void initTimer();
+void reset(void);
 
 void configDisplay(void);
 void BuzzerOn(int freq);
