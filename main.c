@@ -182,7 +182,7 @@ void main(void){
     unsigned int i = 0, j = 0;
     gameStart = 0;
     countdown = 0;
-    starting = 0;
+    starting = 4;
     timerCount = 0;
 
     while (1){
