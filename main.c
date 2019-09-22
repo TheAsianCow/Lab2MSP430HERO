@@ -9,60 +9,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Notes
-struct Note A4 = {440, 4};
-struct Note A8 = {440, 8};
-struct Note A6 = {440, 16};
-
-struct Note As4 = {466, 4};
-struct Note As8 = {466, 8};
-struct Note As6 = {466, 16};
-
-struct Note B4 = {494, 4};
-struct Note B8 = {494, 8};
-struct Note B6 = {494, 16};
-
-struct Note C4 = {523, 4};
-struct Note C8 = {523, 8};
-struct Note C6 = {523, 16};
-
-struct Note Cs4 = {554, 4};
-struct Note Cs8 = {554, 8};
-struct Note Cs6 = {554, 16};
-
-struct Note D4 = {587, 4};
-struct Note D8 = {587, 8};
-struct Note D6 = {587, 16};
-
-struct Note Ds4 = {622, 4};
-struct Note Ds8 = {622, 8};
-struct Note Ds6 = {622, 16};
-
-struct Note E4 = {659, 4};
-struct Note E8 = {659, 8};
-struct Note E6 = {659, 16};
-
-struct Note F4 = {698, 4};
-struct Note F8 = {698, 8};
-struct Note F6 = {698, 16};
-
-struct Note Fs4 = {740, 4};
-struct Note Fs8 = {740, 8};
-struct Note Fs6 = {740, 16};
-
-struct Note G4 = {784, 4};
-struct Note G8 = {784, 8};
-struct Note G6 = {784, 16};
-
-struct Note Gs4 = {831, 4};
-struct Note Gs8 = {831, 8};
-struct Note Gs6 = {831, 16};
-
-struct Note rest4 = {0, 4};
-struct Note rest8 = {0, 8};
-struct Note rest6 = {0, 16};
-
 void main(void){
+
     WDTCTL = WDTPW | WDTHOLD;
     // enable interrupt
     _BIS_SR(GIE);
@@ -72,31 +20,157 @@ void main(void){
     // SONG_LENGTH = 54
 
     // Song
-    struct Note hotel_cali[] = {
-                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6), // 15 // 54 total Notes
-                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
-                                octaveUp(D6), octaveUp(B6), octaveUp(Fs8),
+//    struct Note hotel_cali[] = {
+//                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6), // 15 // 54 total Notes
+//                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+//                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+//                                octaveUp(D6), octaveUp(B6), octaveUp(Fs6),
+//                                octaveUp(D6), octaveUp(B6), octaveUp(Fs8),
+//
+//                                octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6), //8
+//                                octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
+//                                octaveUp(Cs6), octaveUp(As6),
+//
+//                                rest6, rest6, rest6, rest8, // 4
+//
+//                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6), // 15
+//                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+//                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+//                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
+//                                octaveUp(Cs6), octaveUp(A6), octaveUp(E8),
+//
+//                                octaveUp(B6), octaveUp(Gs6), octaveUp(E6), // 8
+//                                octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
+//                                octaveUp(B6), octaveUp(Gs6),
+//
+//                                rest6, rest6, rest6, rest8 // 4
+//    };
 
-                                octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6), //8
-                                octaveUp(Cs6), octaveUp(As6), octaveUp(Fs6),
-                                octaveUp(Cs6), octaveUp(As6),
 
-                                rest6, rest6, rest6, rest8, // 4
+    // Notes
+    const struct Note A4 = {440, 4};
+    const struct Note A8 = {440, 8};
+    const struct Note A6 = {440, 16};
 
-                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6), // 15
-                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                octaveUp(Cs6), octaveUp(A6), octaveUp(E6),
-                                octaveUp(Cs6), octaveUp(A6), octaveUp(E8),
+    const struct Note As4 = {466, 4};
+    const struct Note As8 = {466, 8};
+    const struct Note As6 = {466, 16};
 
-                                octaveUp(B6), octaveUp(Gs6), octaveUp(E6), // 8
-                                octaveUp(B6), octaveUp(Gs6), octaveUp(E6),
-                                octaveUp(B6), octaveUp(Gs6),
+    const struct Note B4 = {494, 4};
+    const struct Note B8 = {494, 8};
+    const struct Note B6 = {494, 16};
 
-                                rest6, rest6, rest6, rest8 // 4
-    };
+    const struct Note C4 = {523, 4};
+    const struct Note C8 = {523, 8};
+    const struct Note C6 = {523, 16};
+
+    const struct Note Cs4 = {554, 4};
+    const struct Note Cs8 = {554, 8};
+    const struct Note Cs6 = {554, 16};
+
+    const struct Note D4 = {587, 4};
+    const struct Note D8 = {587, 8};
+    struct Note D6 = {587, 16};
+
+    const struct Note Ds4 = {622, 4};
+    const struct Note Ds8 = {622, 8};
+    const struct Note Ds6 = {622, 16};
+
+    const struct Note E4 = {659, 4};
+    const struct Note E8 = {659, 8};
+    const struct Note E6 = {659, 16};
+
+    const struct Note F4 = {698, 4};
+    const struct Note F8 = {698, 8};
+    const struct Note F6 = {698, 16};
+
+    const struct Note Fs4 = {740, 4};
+    const struct Note Fs8 = {740, 8};
+    const struct Note Fs6 = {740, 16};
+
+    const struct Note G4 = {784, 4};
+    const struct Note G8 = {784, 8};
+    const struct Note G6 = {784, 16};
+
+    const struct Note Gs4 = {831, 4};
+    const struct Note Gs8 = {831, 8};
+    const struct Note Gs6 = {831, 16};
+
+    const struct Note rest4 = {0, 4};
+    const struct Note rest8 = {0, 8};
+    const struct Note rest6 = {0, 16};
+
+    hotel_cali[0] = D6;
+    hotel_cali[1] = B6;
+    hotel_cali[2] = Fs6;
+
+    hotel_cali[3] = D6;
+    hotel_cali[4] = B6;
+    hotel_cali[5] = Fs6;
+
+    hotel_cali[6] = D6;
+    hotel_cali[7] = B6;
+    hotel_cali[8] = Fs6;
+
+    hotel_cali[9] = D6;
+    hotel_cali[10] = B6;
+    hotel_cali[11] = Fs6;
+
+    hotel_cali[12] = D6;
+    hotel_cali[13] = B6;
+    hotel_cali[14] = Fs8;
+
+    hotel_cali[15] = Cs6;
+    hotel_cali[16] = As6;
+    hotel_cali[17] = Fs6;
+
+    hotel_cali[18] = Cs6;
+    hotel_cali[19] = As6;
+    hotel_cali[20] = Fs6;
+
+    hotel_cali[21] = Cs6;
+    hotel_cali[22] = As6;
+
+    hotel_cali[23] = rest6;
+    hotel_cali[24] = rest6;
+    hotel_cali[25] = rest6;
+    hotel_cali[26] = rest8;
+
+    hotel_cali[27] = Cs6;
+    hotel_cali[28] = A6;
+    hotel_cali[29] = E6;
+
+    hotel_cali[30] = Cs6;
+    hotel_cali[31] = A6;
+    hotel_cali[32] = E6;
+
+    hotel_cali[33] = Cs6;
+    hotel_cali[34] = A6;
+    hotel_cali[35] = E6;
+
+    hotel_cali[36] = Cs6;
+    hotel_cali[37] = A6;
+    hotel_cali[38] = E6;
+
+    hotel_cali[39] = Cs6;
+    hotel_cali[40] = A6;
+    hotel_cali[41] = E8;
+
+    hotel_cali[42] = B6;
+    hotel_cali[43] = Gs6;
+    hotel_cali[44] = E6;
+
+    hotel_cali[45] = B6;
+    hotel_cali[46] = Gs6;
+    hotel_cali[47] = E6;
+
+    hotel_cali[48] = B6;
+    hotel_cali[49] = Gs6;
+
+    hotel_cali[50] = rest6;
+    hotel_cali[51] = rest6;
+    hotel_cali[52] = rest6;
+    hotel_cali[53] = rest8;
 
     initLeds();
     configDisplay();
@@ -108,8 +182,6 @@ void main(void){
     unsigned int i = 0, j = 0;
     gameStart = 0;
     countdown = 0;
-
-    //initialize the song
 
     while (1){
         currKey = getKey();
