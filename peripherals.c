@@ -174,7 +174,6 @@ int playNote(struct Note in) {
 #pragma vector=TIMER2_A0_VECTOR
 interrupt void Timer_A2 (void) {
     if(countdown==1){
-        timerCount++;
         if(timerCount%205==0&&starting){
             starting--;
             Graphics_clearDisplay(&g_sContext);
@@ -205,6 +204,7 @@ interrupt void Timer_A2 (void) {
             }
             Graphics_flushBuffer(&g_sContext);
         }
+        timerCount++;
     }
     if(gameStart==1){
         timerCount++;
