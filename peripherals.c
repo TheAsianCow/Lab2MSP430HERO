@@ -219,7 +219,7 @@ interrupt void Timer_A2 (void) {
         Graphics_clearDisplay(&g_sContext);
         Graphics_drawStringCentered(&g_sContext, "YOU WIN!", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
         Graphics_flushBuffer(&g_sContext);
-        gameStart = 0;
+        gameStart = 3;
         timerCount = 0;
         note = 0;
         setLeds(BIT0|BIT1|BIT2|BIT3);
@@ -231,7 +231,7 @@ interrupt void Timer_A2 (void) {
 }
 
 void countDown(struct Note in, int count) {
-    int setTime = 16/in.time*64*2;
+    int setTime = 16/in.time*64;
     if (count % setTime == 0){
         if(hit==0&&hotel_cali[note].freq!=0){
             misses--;

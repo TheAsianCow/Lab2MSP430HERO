@@ -267,7 +267,7 @@ void main(void){
                 Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
                 reset();
-                j = 32000;
+                j = 50000;
                 while(j)j--;
             }
             Graphics_flushBuffer(&g_sContext);
@@ -280,7 +280,7 @@ void main(void){
             gameStart = 0;
 
         }
-        else{
+        else if(gameStart==0){
             Graphics_drawStringCentered(&g_sContext, "MSP430 HERO", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);
         }
