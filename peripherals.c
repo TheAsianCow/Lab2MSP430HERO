@@ -219,8 +219,10 @@ interrupt void Timer_A2 (void) {
         Graphics_clearDisplay(&g_sContext);
         Graphics_drawStringCentered(&g_sContext, "YOU WIN!", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
         Graphics_flushBuffer(&g_sContext);
+        gameStart = 0;
         timerCount = 0;
         note = 0;
+        setLeds(BIT0|BIT1|BIT2|BIT3);
     }
     if(won){
         timerCount++;
