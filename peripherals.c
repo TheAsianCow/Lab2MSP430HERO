@@ -174,7 +174,7 @@ int playNote(struct Note in) {
 #pragma vector=TIMER2_A0_VECTOR
 interrupt void Timer_A2 (void) {
     if(countdown==1){
-        if(timerCount%205==0&&starting){
+        if(timerCount%200==0&&starting){
             starting--;
             Graphics_clearDisplay(&g_sContext);
             if (starting==3){
@@ -201,6 +201,7 @@ interrupt void Timer_A2 (void) {
                 timerCount=0;
                 starting=4;
                 Graphics_clearDisplay(&g_sContext);
+                Graphics_drawString(&g_sContext, "Health", AUTO_STRING_LENGTH, 10, 10, TRANSPARENT_TEXT);
                 Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
             }

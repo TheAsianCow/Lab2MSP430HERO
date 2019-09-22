@@ -179,7 +179,7 @@ void main(void){
     initTimer();
 
     unsigned char currKey;
-    unsigned int i = 0, j = 0;
+//    unsigned int i = 0, j = 0;
     gameStart = 0;
     countdown = 0;
     starting = 4;
