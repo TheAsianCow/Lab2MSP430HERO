@@ -183,6 +183,7 @@ void main(void){
     gameStart = 0;
     countdown = 0;
     starting = 0;
+    timerCount = 0;
 
     while (1){
         currKey = getKey();
@@ -229,7 +230,7 @@ void main(void){
 
         }
         else if(gameStart==1){
-            Graphics_clearDisplay(&g_sContext);
+//            Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);
         }

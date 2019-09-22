@@ -193,12 +193,14 @@ interrupt void Timer_A2 (void) {
             }
             if (starting==3){
                 Graphics_drawStringCentered(&g_sContext, "START",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
                 setUserLED(3);
                 int j = 16000;
                 while(j)j--;
                 setUserLED(0);
                 countdown=0;
                 gameStart=1;
+                timerCount=0;
             }
             Graphics_flushBuffer(&g_sContext);
 
