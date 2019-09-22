@@ -217,12 +217,16 @@ interrupt void Timer_A2 (void) {
         timerCount = 0;
         note = 0;
         BuzzerOff();
+        setLeds(0);
     }
 }
 
 void countDown(struct Note in, int count) {
     int setTime = 16/in.time*64;
-    if (count % setTime == 0) note++;
+    if (count % setTime == 0){
+        note++;
+        setLeds(0);
+    }
 }
 
 struct Note octaveUp(struct Note in) {
