@@ -16,7 +16,7 @@ void main(void){
     _BIS_SR(GIE);
     // For Loops use:
     // CLK_SPEED = 32768
-    // SONG_BPM = 74
+    // SONG_BPM = 75
     // SONG_LENGTH = 54
 
     // Song
@@ -178,15 +178,16 @@ void main(void){
     configBtn();
     initTimer();
 
-    unsigned char currKey;
-//    unsigned int i = 0, j = 0;
+    unsigned char currKey, currBtn;
     gameStart = 0;
     countdown = 0;
     starting = 4;
     timerCount = 0;
+    unsigned int health[] = {1,1,1,1,1,1,1,1,1,1},i = 10, j = 0;
 
     while (1){
         currKey = getKey();
+        currBtn = getBtn();
 
         if (!gameStart && currKey == '*')countdown = 1;
 
@@ -230,17 +231,51 @@ void main(void){
 
         }
         else if(gameStart==1&&currKey=='#'){
-            gameStart = 2;
-            timerCount = 0;
-            note = 0;
-            BuzzerOff();
-            setLeds(0);
+            reset();
         }
         else if(gameStart==1){
+            if(hotel_cali[note].led==BIT0 && currBtn==BIT4){
+                Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+            }
+            else if(hotel_cali[note].led==BIT1 && currBtn==BIT2){
+                Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+            }
+            else if(hotel_cali[note].led==BIT2 && currBtn==BIT6){
+                Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+            }
+            else if(hotel_cali[note].led==BIT3 && currBtn==BIT0){
+                Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+            }
+            else {
+                i--;
+                Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+                if(i){
+                    Graphics_clearDisplay(&g_sContext);
+                    Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+                    Graphics_flushBuffer(&g_sContext);
+                    j = 16000;
+                    while(j)j--;
+                    reset();
+                }
+            }
+
         }
         else if(gameStart==2){
             Graphics_clearDisplay(&g_sContext);
+            for(j = 0; j < 10; j++) health[j] = 1;
+            i = 10;
             gameStart = 0;
+
         }
         else{
             Graphics_drawStringCentered(&g_sContext, "MSP430 HERO", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
