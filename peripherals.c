@@ -141,7 +141,7 @@ struct Note song[SONG_LENGTH];
 void initTimer() {
     // A2 timer control
     TA2CTL  = (TASSEL__ACLK|ID__1|MC__UP);
-    TA2CCR0  = (CLK_SPEED * (SONG_BPM / 15)) / 16;
+    TA2CCR0  = (CLK_SPEED * (SONG_BPM / 15)) / 1024;
     TA2CCTL0 = CCIE; // IE
 
 }
@@ -174,6 +174,10 @@ int playNote(struct Note in) {
 #pragma vector=TIMER2_A0_VECTOR
 interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
+    if(countdown==1){
+        timerCount++;
+        if(timerCount)
+    }
     if(gameStart==1){
         timerCount++;
         countDown(hotel_cali[note], timerCount);
@@ -181,13 +185,14 @@ interrupt void Timer_A2 (void) {
     }
     if(note==SONG_LENGTH){
         gameStart = 2;
+        timerCount = 0;
         note = 0;
         BuzzerOff();
     }
 }
 
 void countDown(struct Note in, int count) {
-    int setTime = 16 / in.time;
+    int setTime = 16/in.time*64;
     if (count % setTime == 0) note++;
 }
 

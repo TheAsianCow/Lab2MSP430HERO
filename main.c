@@ -48,55 +48,55 @@ void main(void){
 
 
     // Notes
-    const struct Note A4 = {440, 4};
-    const struct Note A8 = {440, 8};
+//    const struct Note A4 = {440, 4};
+//    const struct Note A8 = {440, 8};
     const struct Note A6 = {440, 16};
 
-    const struct Note As4 = {466, 4};
-    const struct Note As8 = {466, 8};
+//    const struct Note As4 = {466, 4};
+//    const struct Note As8 = {466, 8};
     const struct Note As6 = {466, 16};
 
-    const struct Note B4 = {494, 4};
-    const struct Note B8 = {494, 8};
+//    const struct Note B4 = {494, 4};
+//    const struct Note B8 = {494, 8};
     const struct Note B6 = {494, 16};
 
-    const struct Note C4 = {523, 4};
-    const struct Note C8 = {523, 8};
-    const struct Note C6 = {523, 16};
+//    const struct Note C4 = {523, 4};
+//    const struct Note C8 = {523, 8};
+//    const struct Note C6 = {523, 16};
 
-    const struct Note Cs4 = {554, 4};
-    const struct Note Cs8 = {554, 8};
+//    const struct Note Cs4 = {554, 4};
+//    const struct Note Cs8 = {554, 8};
     const struct Note Cs6 = {554, 16};
 
-    const struct Note D4 = {587, 4};
-    const struct Note D8 = {587, 8};
-    struct Note D6 = {587, 16};
+//    const struct Note D4 = {587, 4};
+//    const struct Note D8 = {587, 8};
+    const struct Note D6 = {587, 16};
 
-    const struct Note Ds4 = {622, 4};
-    const struct Note Ds8 = {622, 8};
-    const struct Note Ds6 = {622, 16};
+//    const struct Note Ds4 = {622, 4};
+//    const struct Note Ds8 = {622, 8};
+//    const struct Note Ds6 = {622, 16};
 
-    const struct Note E4 = {659, 4};
+//    const struct Note E4 = {659, 4};
     const struct Note E8 = {659, 8};
     const struct Note E6 = {659, 16};
 
-    const struct Note F4 = {698, 4};
-    const struct Note F8 = {698, 8};
-    const struct Note F6 = {698, 16};
+//    const struct Note F4 = {698, 4};
+//    const struct Note F8 = {698, 8};
+//    const struct Note F6 = {698, 16};
 
-    const struct Note Fs4 = {740, 4};
+//    const struct Note Fs4 = {740, 4};
     const struct Note Fs8 = {740, 8};
     const struct Note Fs6 = {740, 16};
 
-    const struct Note G4 = {784, 4};
-    const struct Note G8 = {784, 8};
-    const struct Note G6 = {784, 16};
+//    const struct Note G4 = {784, 4};
+//    const struct Note G8 = {784, 8};
+//    const struct Note G6 = {784, 16};
 
-    const struct Note Gs4 = {831, 4};
-    const struct Note Gs8 = {831, 8};
+//    const struct Note Gs4 = {831, 4};
+//    const struct Note Gs8 = {831, 8};
     const struct Note Gs6 = {831, 16};
 
-    const struct Note rest4 = {0, 4};
+//    const struct Note rest4 = {0, 4};
     const struct Note rest8 = {0, 8};
     const struct Note rest6 = {0, 16};
 
