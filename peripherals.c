@@ -208,9 +208,9 @@ interrupt void Timer_A2 (void) {
     }
     if(gameStart==1){
         timerCount++;
-        countDown(hotel_cali[note], timerCount);
         playNote(hotel_cali[note]);
         setLeds(hotel_cali[note].led);
+        countDown(hotel_cali[note], timerCount);
     }
     if(note==SONG_LENGTH){
         gameStart = 2;

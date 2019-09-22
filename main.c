@@ -234,6 +234,7 @@ void main(void){
             timerCount = 0;
             note = 0;
             BuzzerOff();
+            setLeds(0);
         }
         else if(gameStart==1){
 //            Graphics_clearDisplay(&g_sContext);
