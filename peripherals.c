@@ -221,7 +221,10 @@ interrupt void Timer_A2 (void) {
 void countDown(struct Note in, int count) {
     int setTime = 16/in.time*64*2;
     if (count % setTime == 0){
-        if(hit==0){
+        if(hit==0&&hotel_cali[note].freq!=0){
+            misses--;
+            health[misses]=0;
+            drawHealth();
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);
@@ -249,6 +252,16 @@ void reset(void){
     note = 0;
     BuzzerOff();
     setLeds(0);
+}
+
+void drawHealth(void){
+    int i;
+    struct Graphics_Rectangle r = {10,20,14,28};
+    for(i = 0; i < 10; i++){
+        r.xMin += i*8;
+        r.yMin += i*8;
+        Graphics_drawRectangle(&g_sContext, &r);
+    }
 }
 
 void BuzzerOn(int freq)

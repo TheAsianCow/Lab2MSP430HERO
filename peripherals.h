@@ -69,7 +69,7 @@ unsigned int note;
 unsigned int gameStart;
 unsigned int countdown;
 unsigned int starting;
-unsigned int hit;
+unsigned int hit, misses, health[10];
 
 /*
  * UCSI SPI Clock parameters
@@ -101,6 +101,7 @@ struct Note octaveUp(struct Note in);
 struct Note octaveDown(struct Note in);
 void initTimer();
 void reset(void);
+void drawHealth(void);
 
 void configDisplay(void);
 void BuzzerOn(int freq);
