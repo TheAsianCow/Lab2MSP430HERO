@@ -65,9 +65,9 @@ struct Note hotel_cali[SONG_LENGTH];
 unsigned int timerCount;
 unsigned int start;
 unsigned int note;
-
 unsigned int gameStart;
 unsigned int countdown;
+unsigned int starting;
 
 
 /*

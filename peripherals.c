@@ -176,7 +176,33 @@ interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
     if(countdown==1){
         timerCount++;
-        if(timerCount);
+        if(timerCount%205==0&&starting<3){
+            starting++;
+            Graphics_clearDisplay(&g_sContext);
+            if (starting==0){
+                Graphics_drawStringCentered(&g_sContext, "3",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+                setUserLED(1);
+            }
+            if (starting==1){
+                Graphics_drawStringCentered(&g_sContext, "2",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+                setUserLED(2);
+            }
+            if (starting==2){
+                Graphics_drawStringCentered(&g_sContext, "1",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+                setUserLED(1);
+            }
+            if (starting==3){
+                Graphics_drawStringCentered(&g_sContext, "START",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+                setUserLED(3);
+                int j = 16000;
+                while(j)j--;
+                setUserLED(0);
+                countdown=0;
+                gameStart=1;
+            }
+            Graphics_flushBuffer(&g_sContext);
+
+        }
     }
     if(gameStart==1){
         timerCount++;

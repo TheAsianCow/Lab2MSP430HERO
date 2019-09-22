@@ -182,6 +182,7 @@ void main(void){
     unsigned int i = 0, j = 0;
     gameStart = 0;
     countdown = 0;
+    starting = 0;
 
     while (1){
         currKey = getKey();
@@ -189,46 +190,48 @@ void main(void){
         if (!gameStart && currKey == '*')countdown = 1;
 
         if (countdown == 1){
-            for (i = 0; i <= 20000; i++){
-                if (i == 0){
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "3",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    setUserLED(1);
-                }
-                if (i == 8000){
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "2",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    setUserLED(2);
-                }
-                if (i == 16000){
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "1",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    setUserLED(1);
-                }
-                if (i == 20000){
-                    Graphics_clearDisplay(&g_sContext);
-                    Graphics_drawStringCentered(&g_sContext, "START",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
-                    Graphics_flushBuffer(&g_sContext);
-                    setUserLED(3);
-                    j = 16000;
-                    while(j)j--;
-                    setUserLED(0);
-                }
-            }
-
-            countdown = 0;
-            gameStart = 1;
-
-            Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-            Graphics_flushBuffer(&g_sContext);
+//            for (i = 0; i <= 20000; i++){
+//                if (i == 0){
+//                    Graphics_clearDisplay(&g_sContext);
+//                    Graphics_drawStringCentered(&g_sContext, "3",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+//                    Graphics_flushBuffer(&g_sContext);
+//                    setUserLED(1);
+//                }
+//                if (i == 8000){
+//                    Graphics_clearDisplay(&g_sContext);
+//                    Graphics_drawStringCentered(&g_sContext, "2",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+//                    Graphics_flushBuffer(&g_sContext);
+//                    setUserLED(2);
+//                }
+//                if (i == 16000){
+//                    Graphics_clearDisplay(&g_sContext);
+//                    Graphics_drawStringCentered(&g_sContext, "1",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+//                    Graphics_flushBuffer(&g_sContext);
+//                    setUserLED(1);
+//                }
+//                if (i == 20000){
+//                    Graphics_clearDisplay(&g_sContext);
+//                    Graphics_drawStringCentered(&g_sContext, "START",AUTO_STRING_LENGTH,48, 48,TRANSPARENT_TEXT);
+//                    Graphics_flushBuffer(&g_sContext);
+//                    setUserLED(3);
+//                    j = 16000;
+//                    while(j)j--;
+//                    setUserLED(0);
+//                }
+//            }
+//
+//            countdown = 0;
+//            gameStart = 1;
+//
+//            Graphics_clearDisplay(&g_sContext);
+//            Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+//            Graphics_flushBuffer(&g_sContext);
 
         }
         else if(gameStart==1){
-
+            Graphics_clearDisplay(&g_sContext);
+            Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+            Graphics_flushBuffer(&g_sContext);
         }
         else if(gameStart==2){
             Graphics_clearDisplay(&g_sContext);
