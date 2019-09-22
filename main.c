@@ -187,7 +187,6 @@ void main(void){
         currKey = getKey();
 
         if (!gameStart && currKey == '*'){
-            gameStart = 1;
             countdown = 1;
         };
 
@@ -223,6 +222,8 @@ void main(void){
             }
 
             countdown = 0;
+            gameStart = 1;
+
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
             Graphics_flushBuffer(&g_sContext);

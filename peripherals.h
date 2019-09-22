@@ -52,7 +52,7 @@
 
 // Song Stats
 #define CLK_SPEED 32768
-#define SONG_BPM 74
+#define SONG_BPM 75
 #define SONG_LENGTH 54
 struct Note {
         int freq, time; //note frequency

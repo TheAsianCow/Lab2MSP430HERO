@@ -179,6 +179,7 @@ interrupt void Timer_A2 (void) {
         countDown(hotel_cali[note], timerCount);
         playNote(hotel_cali[note]);
     }
+    if(note==SONG_LENGTH) gameStart = 0;
 }
 
 void countDown(struct Note in, int count) {
