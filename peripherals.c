@@ -210,6 +210,7 @@ interrupt void Timer_A2 (void) {
         timerCount++;
         countDown(hotel_cali[note], timerCount);
         playNote(hotel_cali[note]);
+        setLeds(hotel_cali[note].led);
     }
     if(note==SONG_LENGTH){
         gameStart = 2;

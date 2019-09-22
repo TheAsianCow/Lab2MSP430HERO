@@ -57,6 +57,7 @@
 struct Note {
         int freq, time; //note frequency
         //note time 1 whole 2 half 4 for quarter 8 for eighth and 16 for sixteenth
+        char led;
 };
 
 //Song
