@@ -237,33 +237,37 @@ void main(void){
             reset();
         }
         else if(gameStart==1){
-            Graphics_clearDisplay(&g_sContext);
             if(hotel_cali[note].led==BIT0 && currBtn==BIT4){
                 hit = 1;
+                Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 drawHealth();
             }
             else if(hotel_cali[note].led==BIT1 && currBtn==BIT2){
                 hit = 1;
+                Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 drawHealth();
             }
             else if(hotel_cali[note].led==BIT2 && currBtn==BIT6){
                 hit = 1;
+                Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 drawHealth();
             }
             else if(hotel_cali[note].led==BIT3 && currBtn==BIT0){
                 hit = 1;
+                Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "HIT", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 drawHealth();
             }
             else if(misses==0){
+                Graphics_clearDisplay(&g_sContext);
                 Graphics_drawStringCentered(&g_sContext, "GAMEOVER", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
                 Graphics_flushBuffer(&g_sContext);
-                j = 16000;
-                while(j)j--;
                 reset();
+                j = 32000;
+                while(j)j--;
             }
             Graphics_flushBuffer(&g_sContext);
 

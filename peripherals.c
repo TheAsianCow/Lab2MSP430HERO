@@ -201,8 +201,7 @@ interrupt void Timer_A2 (void) {
                 timerCount=0;
                 starting=4;
                 Graphics_clearDisplay(&g_sContext);
-                Graphics_drawString(&g_sContext, "Health", AUTO_STRING_LENGTH, 10, 10, TRANSPARENT_TEXT);
-//                Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+                drawHealth();
                 Graphics_flushBuffer(&g_sContext);
             }
             Graphics_flushBuffer(&g_sContext);
@@ -224,9 +223,9 @@ void countDown(struct Note in, int count) {
         if(hit==0&&hotel_cali[note].freq!=0){
             misses--;
             health[misses]=0;
-            drawHealth();
             Graphics_clearDisplay(&g_sContext);
             Graphics_drawStringCentered(&g_sContext, "MISS", AUTO_STRING_LENGTH, 48,48, TRANSPARENT_TEXT);
+            drawHealth();
             Graphics_flushBuffer(&g_sContext);
         }
         hit = 0;
@@ -255,13 +254,16 @@ void reset(void){
 }
 
 void drawHealth(void){
+    Graphics_drawString(&g_sContext, "Health", AUTO_STRING_LENGTH, 10, 10, TRANSPARENT_TEXT);
     int i;
-    struct Graphics_Rectangle r = {10,20,14,28};
+    struct Graphics_Rectangle r = {2,20,6,28};
     for(i = 0; i < 10; i++){
-        r.xMin += i*8;
-        r.yMin += i*8;
-        Graphics_drawRectangle(&g_sContext, &r);
+        r.xMin += 8;
+        r.xMax += 8;
+        if(health[i])Graphics_fillRectangle(&g_sContext,&r);
+        else Graphics_drawRectangle(&g_sContext, &r);
     }
+//    Graphics_flushBuffer(&g_sContext);
 }
 
 void BuzzerOn(int freq)
