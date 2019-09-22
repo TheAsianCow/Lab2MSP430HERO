@@ -186,9 +186,7 @@ void main(void){
     while (1){
         currKey = getKey();
 
-        if (!gameStart && currKey == '*'){
-            countdown = 1;
-        };
+        if (!gameStart && currKey == '*')countdown = 1;
 
         if (countdown == 1){
             for (i = 0; i <= 20000; i++){
@@ -229,8 +227,12 @@ void main(void){
             Graphics_flushBuffer(&g_sContext);
 
         }
-        else if(gameStart){
+        else if(gameStart==1){
 
+        }
+        else if(gameStart==2){
+            Graphics_clearDisplay(&g_sContext);
+            gameStart = 0;
         }
         else{
             Graphics_drawStringCentered(&g_sContext, "MSP430 HERO", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);

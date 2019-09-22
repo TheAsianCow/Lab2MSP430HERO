@@ -174,12 +174,16 @@ int playNote(struct Note in) {
 #pragma vector=TIMER2_A0_VECTOR
 interrupt void Timer_A2 (void) {
     // Turns off buzzer resets timers
-    if(gameStart){
+    if(gameStart==1){
         timerCount++;
         countDown(hotel_cali[note], timerCount);
         playNote(hotel_cali[note]);
     }
-    if(note==SONG_LENGTH) gameStart = 0;
+    if(note==SONG_LENGTH){
+        gameStart = 2;
+        note = 0;
+        BuzzerOff();
+    }
 }
 
 void countDown(struct Note in, int count) {
