@@ -237,9 +237,6 @@ void main(void){
             setLeds(0);
         }
         else if(gameStart==1){
-//            Graphics_clearDisplay(&g_sContext);
-            Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
-            Graphics_flushBuffer(&g_sContext);
         }
         else if(gameStart==2){
             Graphics_clearDisplay(&g_sContext);

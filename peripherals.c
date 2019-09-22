@@ -201,16 +201,18 @@ interrupt void Timer_A2 (void) {
                 timerCount=0;
                 starting=4;
                 Graphics_clearDisplay(&g_sContext);
+                Graphics_drawStringCentered(&g_sContext, "Playing game", AUTO_STRING_LENGTH, 48, 48, TRANSPARENT_TEXT);
+                Graphics_flushBuffer(&g_sContext);
             }
             Graphics_flushBuffer(&g_sContext);
         }
         timerCount++;
     }
     if(gameStart==1){
-        timerCount++;
         playNote(hotel_cali[note]);
         setLeds(hotel_cali[note].led);
         countDown(hotel_cali[note], timerCount);
+        timerCount++;
     }
     if(note==SONG_LENGTH){
         gameStart = 2;
