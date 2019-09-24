@@ -141,7 +141,7 @@ struct Note song[SONG_LENGTH];
 void initTimer() {
     // A2 timer control
     TA2CTL  = (TASSEL__ACLK|ID__1|MC__UP);
-    TA2CCR0  = (CLK_SPEED * (SONG_BPM / 15)) / 1024;
+    TA2CCR0  = (CLK_SPEED * (SONG_BPM / 15))/1024-1;
     TA2CCTL0 = CCIE; // IE
 
 }
