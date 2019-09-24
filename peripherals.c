@@ -159,10 +159,7 @@ int playNote(struct Note in) {
     TB0CTL  = (TBSSEL__ACLK|ID__1|MC__UP);
     TB0CTL  &= ~TBIE;
 
-    // A2 timer control
-    TA2CTL  = (TASSEL__ACLK|ID__1|MC__UP);
-
-    TB0CCR0   = CLK_SPEED/in.freq;         // clock frequency/note frequency = pwm period
+    TB0CCR0   = CLK_SPEED/in.freq-1;         // clock frequency/note frequency = pwm period
     TB0CCTL0 &= ~CCIE;
 
     TB0CCTL5  = OUTMOD_7;
